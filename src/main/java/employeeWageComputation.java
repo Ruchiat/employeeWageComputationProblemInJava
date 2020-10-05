@@ -15,32 +15,27 @@ public class employeeWageComputation {
 		int y = (int) Math.round(x);
 		return y;
 	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	
+	//to calculate Total salary of employee
+	public static int calculateEmpWage(int Worked_Hrs, int Day_Salary_Of_Employee , int  Month_Salary_Of_Employee) {
 		
-		int Worked_Hrs = 0, Day_Salary_Of_Employee = 0, Month_Salary_Of_Employee = 0;
 		int Emp_Worked_hrs = 0, i, Salary, Total_Salary_Of_Employee = 0;
-		System.out.println("Wecome to employee wage program");
-
-		// int Random_No = (int) (Math.floor(Math.random() * 10) % 2);
-		// random function for check employee is absent or present
-
-		for (i = 1; i <= WORKING_DAYS_IN_MONTH && Emp_Worked_hrs <= MAX_WORKING_HRS; i++) {
+		
+		for ( i = 1; i <= WORKING_DAYS_IN_MONTH && Emp_Worked_hrs <= MAX_WORKING_HRS; i++) {
 			int Job_Type = (int) (Math.floor(Math.random() * 10) % 3);
 			
 			switch (Job_Type) {
-			case FULL_TIME:
-				System.out.println("Employee is present full time.");
-				Worked_Hrs = 8;
-				break;
-				
-			case PART_TIME:
-				System.out.println("Employee is present part time.");
-				Worked_Hrs = 4;
-				break;
-			default:
-				System.out.println("Employee is absent.");
+				case FULL_TIME:
+					System.out.println("Employee is present full time.");
+					Worked_Hrs = 8;
+					break;
+					
+				case PART_TIME:
+					System.out.println("Employee is present part time.");
+					Worked_Hrs = 4;
+					break;
+				default:
+					System.out.println("Employee is absent.");
 			}
 
 			
@@ -48,23 +43,30 @@ public class employeeWageComputation {
 				if (Worked_Hrs == 8)
 					break;
 			} else if (Emp_Worked_hrs == 98) {
-				break;
+					break;
 			}
 			
 			Emp_Worked_hrs += Worked_Hrs;
 			Salary = WAGE_PER_HOUR * Worked_Hrs;
 			Total_Salary_Of_Employee += Salary;
 		}
-
+		return Total_Salary_Of_Employee;
+	}	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*
+		 * Worked_Hrs = 8; 
+		 * Day_Salary_Of_Employee = 200;
+		 *  Month_Salary_Of_Employee =
+		 * 1600;
+		 */
 		
-		System.out.println("Total salary of employee for 100hrs and 20days, rupees " + Total_Salary_Of_Employee);
-		// computing employee wage for one day
-		Day_Salary_Of_Employee = WAGE_PER_HOUR * Worked_Hrs;
-		System.out.println("Your one day salary creadited to your account, rupees " + Day_Salary_Of_Employee);
-		// computing employee wage for month
-		Month_Salary_Of_Employee = WORKING_DAYS_IN_MONTH * Day_Salary_Of_Employee;
-		System.out.println("Your one day salary creadited to your account, rupees " + Month_Salary_Of_Employee);
-
+		System.out.println("Wecome to employee wage program");
+		int wageOfEmp = calculateEmpWage(8, 200, 1600);
+		System.out.println("Total salary of employee : " + wageOfEmp);
+	
 	}
 
 }
